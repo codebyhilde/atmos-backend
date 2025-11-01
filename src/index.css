@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-sky-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden; font-family: 'Inter', sans-serif;
+  }
+}
