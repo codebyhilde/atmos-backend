@@ -1,6 +1,7 @@
 import { Header } from "./components/Header";
 import { Location } from "./components/Location";
 import { CurrentTime } from "./components/CurrentTime";
+import { WeatherCondition } from "./components/WeatherCondition";
 import { useToggleTheme } from "./hooks/useToggleTheme";
 import data from "./mocks/with-results.json";
 
@@ -21,6 +22,11 @@ function App() {
                 iconUrl={currentTime.condition.icon}
                 tempCelsius={currentTime.temp_c}
                 weatherInfo={currentTime.condition.text}
+            />
+            <WeatherCondition
+                humidity={currentTime.humidity}
+                windKph={currentTime.wind_kph}
+                pressureMb={currentTime.pressure_mb}
             />
         </div>
     );
