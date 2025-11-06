@@ -3,6 +3,7 @@ import { Location } from "./components/Location";
 import { CurrentTime } from "./components/CurrentTime";
 import { WeatherCondition } from "./components/WeatherCondition";
 import { HourlyForecast } from "./components/HourlyForecast";
+import { WeeklyForecastChart } from './components/WeeklyForecastChart';
 import { useTheme } from "./hooks/useTheme";
 import forecast from "./mocks/forecast.json"
 import data from "./mocks/with-results.json";
@@ -30,7 +31,8 @@ function App() {
                 windKph={currentTime.wind_kph}
                 pressureMb={currentTime.pressure_mb}
             />
-            <HourlyForecast hourlyForecast={forecast.hourly}/>
+            <HourlyForecast hourlyForecast={forecast.hourly} />
+            <WeeklyForecastChart weeklyForecast={forecast.weekly} />
         </div>
     );
 }
