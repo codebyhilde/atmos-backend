@@ -5,7 +5,7 @@ import { WeatherCondition } from "./components/WeatherCondition";
 import { HourlyForecast } from "./components/HourlyForecast";
 import { WeeklyForecastChart } from "./components/WeeklyForecastChart";
 import { useTheme } from "./hooks/useTheme";
-import data from "./mocks/openweather-response.json";
+import data from "./mocks/with-results.json";
 
 interface WeeklyForecastData {
     labels: string[];
