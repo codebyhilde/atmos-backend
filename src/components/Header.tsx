@@ -1,30 +1,33 @@
+import { LocationSearch } from "./LocationSearch";
+
 interface HeaderProps {
     theme: "light" | "dark";
     toggleTheme: () => void;
+    onSearch: (search: {
+        city: string;
+        country: string;
+        state?: string;
+    }) => void;
 }
 
-export function Header({ theme, toggleTheme }: HeaderProps) {
+export function Header({ theme, toggleTheme, onSearch }: HeaderProps) {
     return (
-        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-            <h1 className="text-3xl font-extrabold mb-3 sm:mb-0 text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600 dark:from-sky-300 dark:to-indigo-400">
-                Atmos
-            </h1>
+        <header className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
+            <div className="flex justify-between sm:justify-start items-center w-full sm:w-auto">
+                <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600 dark:from-sky-300 dark:to-indigo-400 sm:mr-4">
+                    Atmos
+                </h1>
 
-            <div className="flex items-center space-x-3 w-full sm:w-auto">
-                <div className="relative flex-grow">
-                    <input
-                        type="text"
-                        placeholder="Buscar ciudad..."
-                        className="w-full px-4 py-2 rounded-full bg-white dark:bg-gray-800 shadow-inner focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-indigo-500 transition-all"
-                    />
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-                        🔍
-                    </span>
-                </div>
-
-                <button className="flex-shrink-0 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" onClick={toggleTheme}>
+                <button
+                    className="flex-shrink-0 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    onClick={toggleTheme}
+                >
                     <span>{theme === "dark" ? "🌙" : "☀️"}</span>
                 </button>
+            </div>
+
+            <div className="w-full sm:w-auto sm:flex-grow sm:max-w-lg">
+                <LocationSearch onSearch={onSearch} />
             </div>
         </header>
     );
