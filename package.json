@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start:fe": "vite",
+    "start:be": "tsx watch backend/src/server.ts",
+    "dev": "concurrently \"pnpm run start:fe\" \"pnpm run start:be\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
