@@ -9,6 +9,7 @@ import { HourlyForecast } from "./components/HourlyForecast";
 import { WeeklyForecastChart } from "./components/WeeklyForecastChart";
 import { useTheme } from "./hooks/useTheme";
 import { useWeather } from "./hooks/useWeather";
+import type { LocationQuery } from "./interfaces/locationQuery";
 
 function App() {
     const { theme, toggleTheme } = useTheme();
@@ -75,7 +76,7 @@ function App() {
     }
 
     // Renderizado con datos
-    const { timezone, current, hourly, daily } = data;
+    const { current, hourly, daily } = data;
 
     return (
         <div className="container mx-auto p-4 max-w-lg min-h-screen">
@@ -85,9 +86,9 @@ function App() {
                 onSearch={handleLocationUpdate}
             />
             <Location
-                city={locationLabel.city}
-                country={locationLabel.country}
-                state={locationLabel.state}
+                city={locationLabel?.city || ""}
+                country={locationLabel?.country || ""}
+                state={locationLabel?.state || ""}
                 hour={current.hour}
             />
             <CurrentTime
