@@ -1,8 +1,8 @@
 import "dotenv/config";
 import express, { Request, Response } from "express";
 import cors from "cors";
-import weatherRouter from "./routes/weatherRoutes";
-import { weatherRateLimiter } from "./middlewares/rateLimiter"
+import weatherRouter from "./routes/weatherRoutes.js";
+import { weatherRateLimiter } from "./middlewares/rateLimiter.js"
 
 const PORT = process.env.PORT || 3001;
 

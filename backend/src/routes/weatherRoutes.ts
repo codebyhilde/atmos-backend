@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { getNormalizedWeather } from "../services/weatherService";
+import { getNormalizedWeather } from "../services/weatherService.js";
 
 const router = Router();
 

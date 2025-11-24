@@ -1,10 +1,10 @@
-import {
+import type {
     OpenWeatherMapResponse,
     Hourly,
     Daily
 } from "../interfaces/openWeatherData";
 
-import {
+import type {
     NormalizedWeatherData,
     NormalizedCurrentData,
     NormalizedDailyForecast,

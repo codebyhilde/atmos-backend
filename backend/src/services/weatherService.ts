@@ -1,7 +1,7 @@
-import { OpenWeatherMapResponse } from "../interfaces/openWeatherData";
-import { GeocodingResponse } from "../interfaces/geocodingResponse";
-import { NormalizedWeatherData } from "../interfaces/normalizedWeatherData";
-import { normalizeWeatherData } from "../utils/dataNormalization";
+import type { OpenWeatherMapResponse } from "../interfaces/openWeatherData";
+import type { GeocodingResponse } from "../interfaces/geocodingResponse";
+import type { NormalizedWeatherData } from "../interfaces/normalizedWeatherData";
+import { normalizeWeatherData } from "../utils/dataNormalization.js";
 
 const API_KEY = process.env.OPENWEATHER_API_KEY;
 
