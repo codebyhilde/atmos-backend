@@ -39,7 +39,7 @@ async function getCoordinates(
             throw new Error(`Ubicación no encontrada: ${q}`);
         }
 
-        const { lat, lon } = data[0];
+        const { lat, lon } = data[0]!;
         return { lat, lon };
     } catch (error) {
         console.error("Error en Geocoding API:", error);
