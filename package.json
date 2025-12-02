@@ -16,5 +16,18 @@
   "bugs": {
     "url": "https://github.com/codebyhilde/atmos-weather-app/issues"
   },
-  "homepage": "https://github.com/codebyhilde/atmos-weather-app#readme"
+  "homepage": "https://github.com/codebyhilde/atmos-weather-app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.1"
+  }
 }
