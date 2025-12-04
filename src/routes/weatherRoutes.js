@@ -1,17 +1,13 @@
-import express, { Router } from "express";
-import { getNormalizedWeather } from "../services/weatherService";
+const express = require("express");
+const { getNormalizedWeather } = require("../services/weatherService");
 
-const router = Router();
+const router = express.Router();
 
 // Endpoint: GET /api/weather?city=Caracas&country=VE
 // O:         GET /api/weather?city=Miami&country=US&state=FL
-router.get("/weather", async (req: express.Request, res: express.Response) => {
+router.get("/weather", async (req, res) => {
     // Extraer y validar los parametros de la query
-    const { city, country, state } = req.query as {
-        city?: string;
-        country?: string;
-        state?: string;
-    };
+    const { city, country, state } = req.query;
 
     if (typeof city !== "string" || typeof country !== "string") {
         return res.status(400).json({
@@ -29,8 +25,8 @@ router.get("/weather", async (req: express.Request, res: express.Response) => {
     } catch (error) {
         console.error("Error en el endpoint /weather:", error);
         // Manejo de errores del servidor (ej: ubicación no encontrada)
-        return res.status(500).json({ error: (error as Error).message });
+        return res.status(500).json({ error: error.message });
     }
 });
 
-export default router;
+module.exports = router;

@@ -1,9 +1,9 @@
-import "dotenv/config";
-import express from "express";
-import cors from "cors";
-import weatherRouter from "./routes/weatherRoutes";
-import { weatherRateLimiter } from "./middlewares/rateLimiter";
-import serverless from "serverless-http";
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const weatherRouter = require("./src/routes/weatherRoutes");
+const { weatherRateLimiter } = require("./src/middlewares/rateLimiter");
+const serverless = require("serverless-http");
 
 const NODE_ENVIRONMENT = process.env.NODE_ENV;
 
@@ -19,10 +19,7 @@ const allowedOrigins = [
 ];
 
 const corsOptions = {
-    origin: function (
-        origin: string | undefined,
-        callback: (err: Error | null, allow?: boolean) => void
-    ) {
+    origin: function (origin, callback) {
         // Permite solicitudes sin origen (como Postman o peticiones del mismo servidor)
         if (!origin) return callback(null, true);
 
@@ -44,7 +41,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Ruta de Bienvenida (Health Check)
-app.get("/", (_req: express.Request, res: express.Response) => {
+app.get("/", (_req, res) => {
     res.status(200).send("Servidor del Clima operativo.");
 });
 
@@ -62,4 +59,4 @@ if (NODE_ENVIRONMENT === "development") {
     });
 }
 
-export const handler = serverless(app);
+module.exports.handler = serverless(app);

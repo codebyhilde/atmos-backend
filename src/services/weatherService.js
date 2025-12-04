@@ -1,16 +1,9 @@
-import type { OpenWeatherMapResponse } from "../interfaces/openWeatherData";
-import type { GeocodingResponse } from "../interfaces/geocodingResponse";
-import type { NormalizedWeatherData } from "../interfaces/normalizedWeatherData";
-import { normalizeWeatherData } from "../utils/dataNormalization";
+const { normalizeWeatherData } = require("../utils/dataNormalization");
 
 const API_KEY = process.env.OPENWEATHER_API_KEY;
 
 // Obtener Latitud y Longitud
-async function getCoordinates(
-    city: string,
-    countryCode: string,
-    stateCode?: string
-): Promise<{ lat: number; lon: number }> {
+async function getCoordinates(city, countryCode, stateCode) {
     if (!API_KEY) throw new Error("API Key no configurada.");
 
     const q = [city, stateCode, countryCode].filter(Boolean).join(",");
@@ -33,13 +26,13 @@ async function getCoordinates(
             );
         }
 
-        const data = (await response.json()) as GeocodingResponse[];
+        const data = await response.json();
 
         if (!data || data.length === 0) {
             throw new Error(`Ubicación no encontrada: ${q}`);
         }
 
-        const { lat, lon } = data[0]!;
+        const { lat, lon } = data[0];
         return { lat, lon };
     } catch (error) {
         console.error("Error en Geocoding API:", error);
@@ -56,10 +49,7 @@ async function getCoordinates(
 }
 
 // Obtener datos del clima
-async function getRawWeatherData(
-    lat: number,
-    lon: number
-): Promise<OpenWeatherMapResponse> {
+async function getRawWeatherData(lat, lon) {
     if (!API_KEY) throw new Error("API Key no configurada.");
 
     const weatherUrl = `https://api.openweathermap.org/data/3.0/onecall`;
@@ -84,7 +74,7 @@ async function getRawWeatherData(
             );
         }
 
-        const data = (await response.json()) as OpenWeatherMapResponse;
+        const data = await response.json();
         return data;
     } catch (error) {
         console.error("Error en One Call API:", error);
@@ -92,11 +82,7 @@ async function getRawWeatherData(
     }
 }
 
-export async function getNormalizedWeather(
-    city: string,
-    countryCode: string,
-    stateCode?: string
-): Promise<NormalizedWeatherData> {
+async function getNormalizedWeather(city, countryCode, stateCode) {
     const { lat, lon } = await getCoordinates(city, countryCode, stateCode);
 
     const rawData = await getRawWeatherData(lat, lon);
@@ -105,3 +91,5 @@ export async function getNormalizedWeather(
 
     return normalizedData;
 }
+
+module.exports = { getNormalizedWeather };
