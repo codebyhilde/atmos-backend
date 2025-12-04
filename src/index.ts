@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import weatherRouter from "./src/routes/weatherRoutes.js";
 import { weatherRateLimiter } from "./src/middlewares/rateLimiter.js";
+import serverless from "serverless-http";
 
 const NODE_ENVIRONMENT = process.env.NODE_ENV;
 
@@ -60,4 +61,4 @@ if (NODE_ENVIRONMENT === "development") {
     });
 }
 
-export default app;
+export const handler = serverless(app);
