@@ -2,7 +2,7 @@
   "name": "atmos-weather-app",
   "version": "1.0.0",
   "description": "- Este repo es una prueba para identificar si los problemas de enrutamiento de la api y de colisión de tipos se deben al entorno frontend/backend tipo monorepo o es un problema más grande.",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,9 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/codebyhilde/atmos-weather-app/issues"
-  },
   "homepage": "https://github.com/codebyhilde/atmos-weather-app#readme",
   "dependencies": {
     "cors": "^2.8.5",
