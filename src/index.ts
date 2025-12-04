@@ -14,7 +14,8 @@ app.set("trust proxy", 1);
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://atmos-weather-one.vercel.app"
+    "https://atmos-weather-one.vercel.app",
+    "https://atmos-weather-backend.vercel.app"
 ];
 
 const corsOptions = {
