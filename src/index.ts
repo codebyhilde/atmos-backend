@@ -1,8 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import weatherRouter from "./routes/weatherRoutes.js";
-import { weatherRateLimiter } from "./middlewares/rateLimiter.js";
+import weatherRouter from "./routes/weatherRoutes";
+import { weatherRateLimiter } from "./middlewares/rateLimiter";
 import serverless from "serverless-http";
 
 const NODE_ENVIRONMENT = process.env.NODE_ENV;

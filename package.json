@@ -2,7 +2,7 @@
   "name": "atmos-backend",
   "version": "1.0.0",
   "description": "Este repo es una prueba para identificar si los problemas de enrutamiento de la api y de colisión de tipos en atmos-weather-app se deben al entorno frontend/backend tipo monorepo o es un problema más grande.",
-  "type": "module",
+  "type": "commonjs",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx src/index.ts",
